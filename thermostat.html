@@ -2,17 +2,23 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+  <script src="src/thermostat.js"></script>
+  <script src="src/jquery.js"></script>
   <title>Thermostat</title>
 </head>
 <body>
   <div class="thermoDisplay">
     <h1 id="temp"></h1>
-    <span id="PSMStatus"></span>
-    <button type="button" value="Reset" id="reset"/>
-      <button type="button" value="+" id="tempUp"/>
-        <button type="button" value="-" id="tempDown"/>
-          <button type="button" value="Power Saving Mode" id="PSM"/>
   </div>
-  <script src="src/thermostat.js"> </script>
+  <div class="PSMDisplay">
+    <span id="PSMStatus"></span>
+  </div>
+  <div class="buttons">
+    <button type="button" id="reset">Reset</button>
+    <button type="button" id="tempUp">+</button>
+    <button type="button" id="tempDown">-</button>
+    <button type="button" id="PSM">Power saving mode</button>
+  </div>
 </body>
 </html>
