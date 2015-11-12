@@ -1,7 +1,17 @@
 body {
   background-image: url("img/bground.gif");
   background-size: 100%;
+  font-family: Neon;
 }
+@font-face{
+  font-family: "Neon";
+  src: url('Neon.ttf');
+}
+@font-face{
+  font-family: "Digital";
+  src: url('digital-7.ttf');
+}
+
 
 .overlay {
   width: 100%;
@@ -10,4 +20,19 @@ body {
   top: 0;
   left: 0;
   position: fixed;
+
+}
+.infoBlock{
+  position: fixed;
+  height: 100%;
+  top: 0;
+  width: 100%;
+  text-align: center;
+}
+#ptitle{
+  font-size: 10em;
+}
+h2 {
+  font-family: Digital;
+  font-size: 5em;
 }

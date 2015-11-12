@@ -60,8 +60,8 @@ $(document).ready(function(){
   // };
 
   var _updatePSMStatus = function(){
-    var statusStr = thermostat.isPowerSavingOn() ? "on" : "off";
-    $('#PSMStatus').text('power saving mode: '+ statusStr);
+    var statusStr = thermostat.isPowerSavingOn() ? "On" : "Off";
+    $('#PSMStatus').text('Power Saving Mode: '+ statusStr);
   };
 
   updateDisplay();

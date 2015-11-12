@@ -10,15 +10,17 @@
 </head>
 <body>
   <div class="overlay">
+    <div class="infoBlock">
     <div class="thermoDisplay">
-      <h1 id="temp"></h1>
+      <h1 id="ptitle">THERMOSTAT</h1>
+      <h2><span id="temp"></span>°C</h2>
     </div>
     <div class="outsideTempDispay">
       <form id="locForm">
         <input type="text" id="Location" value="London">
         <input type="submit" id="locButton" value="Where are you?"></input>
       </form>
-      <h2 id="outsideTemp"></h2>
+      <h2><span id="outsideTemp"></span>°C</h2>
     </div>
     <div class="PSMDisplay">
       <span id="PSMStatus"></span>
@@ -27,7 +29,8 @@
       <button type="button" id="reset">Reset</button>
       <button type="button" id="tempUp">+</button>
       <button type="button" id="tempDown">-</button>
-      <button type="button" id="PSM">Power saving mode</button>
+      <button type="button" id="PSM">Power Saving Mode</button>
+    </div>
     </div>
 </body>
 </html>
