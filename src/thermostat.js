@@ -34,12 +34,16 @@ Thermostat.prototype.isPowerSavingOn = function(){
   return this._POWER_SAVER === true;
 };
 
-Thermostat.prototype.turnOffPowerSaving = function(){
-  this._POWER_SAVER = false;
+// Thermostat.prototype.turnOffPowerSaving = function(){
+//   this._POWER_SAVER = false;
+// };
+// Thermostat.prototype.turnOnPowerSaving = function(){
+//   this._POWER_SAVER = true;
+// };
+Thermostat.prototype.powerSavingButton = function() {
+  this._POWER_SAVER = !this._POWER_SAVER;
 };
-Thermostat.prototype.turnOnPowerSaving = function(){
-  this._POWER_SAVER = true;
-};
+
 Thermostat.prototype.resetButton = function () {
   this._currentTemperature = this._DEFAULT_TEMPERATURE;
 };

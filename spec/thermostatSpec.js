@@ -46,7 +46,7 @@ describe("Thermostat:", function() {
       expect(thermostat.isPowerSavingOn()).toEqual(true);
     });
     it("if off the max temperature is 32 degrees", function(){
-      thermostat.turnOffPowerSaving();
+      thermostat.powerSavingButton();
       for(i = 0; i < 13; i++){
         thermostat.increaseTemperature();
       }
@@ -65,7 +65,7 @@ describe("Thermostat:", function() {
       expect(thermostat.energyUsage()).toBe("medium-usage");
     });
     it("is red if more than 25", function() {
-      thermostat.turnOffPowerSaving();
+      thermostat.powerSavingButton();
       for (i = 0; i < 10; i++){
         thermostat.increaseTemperature();
       }
