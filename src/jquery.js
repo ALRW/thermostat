@@ -1,6 +1,13 @@
 $(document).ready(function(){
   var thermostat = new Thermostat();
 
+  var _getTempPercent = function(){
+    var minTemp = thermostat._MINIMUM_TEMPERATURE;
+    var maxTemp = thermostat._MAXIMUM_TEMPERATURE_PSM_OFF;
+    var currentTemp = thermostat.temperature();
+    return (currentTemp - minTemp)/(maxTemp - minTemp);
+  };
+
   var showExtTemperature = function(resp){
     var tempInC = _convertKtoC(resp.main.temp);
     $('#outsideTemp').text(tempInC);
@@ -21,19 +28,36 @@ $(document).ready(function(){
   var updateDisplay = function(){
     $('#temp').text(thermostat.temperature());
     _updatePSMStatus();
-    $('.thermoDisplay').css('background-color',_getColor());
+    _updateBackgroundColor();
+    // $('.thermoDisplay').css('background-color',_getColor());
   };
 
-  var _getColor = function(){
-    switch(thermostat.energyUsage()) {
-      case ("low-usage"):
-        return 'green';
-      case ("medium-usage"):
-        return 'orange';
-      case ("high-usage"):
-        return 'red';
-    }
+  var _getRGB = function(percent){
+    var green = Math.round(255 - (percent * 255));
+    var red = Math.round(percent < 0.5 ? percent * 2 * 255 : 255);
+    var blue = 0;
+    var opacity = 0.5;
+    var string = 'rgba(' + red + ',' + green + ',' + blue + ',' + opacity + ')';
+    return string;
   };
+
+  var _updateBackgroundColor = function(){
+    percent = _getTempPercent();
+    console.log(percent);
+    console.log(_getRGB(percent));
+    $('.overlay').css('background-color',_getRGB(percent));
+  };
+
+  // var _getColor = function(){
+  //   switch(thermostat.energyUsage()) {
+  //     case ("low-usage"):
+  //       return 'green';
+  //     case ("medium-usage"):
+  //       return 'orange';
+  //     case ("high-usage"):
+  //       return 'red';
+  //   }
+  // };
 
   var _updatePSMStatus = function(){
     var statusStr = thermostat.isPowerSavingOn() ? "on" : "off";
@@ -41,7 +65,6 @@ $(document).ready(function(){
   };
 
   updateDisplay();
-
   updateLocalWeatherDisplay($('#Location').val());
 
   $('#locForm').submit(function(event){
